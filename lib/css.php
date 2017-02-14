@@ -6,7 +6,7 @@ use F;
 
 /**
  * Kirby Cachebuster CSS Component
- * 
+ *
  * @author Lukas Bestle <lukas@getkirby.com>
  * @license MIT
  * @link https://getkirby.com
@@ -15,7 +15,7 @@ class CSS extends \Kirby\Component\CSS {
 
   /**
    * Builds the html link tag for the given css file
-   * 
+   *
    * @param string $url
    * @param null|string $media
    * @return string
@@ -31,8 +31,7 @@ class CSS extends \Kirby\Component\CSS {
     $file = kirby()->roots()->index() . DS . $url;
 
     if(file_exists($file)) {
-      $mod = f::modified($file);
-      $url = dirname($url) . '/' . f::name($url) . '.' . $mod . '.css';
+      $url .= '?'.f::modified($file);
     }
 
     return parent::tag($url, $media);
