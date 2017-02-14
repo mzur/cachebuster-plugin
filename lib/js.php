@@ -31,7 +31,7 @@ class JS extends \Kirby\Component\JS {
     $file = kirby()->roots()->index() . DS . $src;
 
     if(file_exists($file)) {
-      $url .= '?'.f::modified($file);
+      $src .= '?'.f::modified($file);
     }
 
     return parent::tag($src, $async);
